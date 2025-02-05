@@ -1,0 +1,14 @@
+{
+  "name": "@Cookie-cms/renderer",
+  "version": "1.0.0",
+  "private": false,
+  "main": "index.js",
+  "type": "module",
+  "license": "MIT",
+  "dependencies": {
+    "sharp": "^0.33.5"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  }
+}
