@@ -35,8 +35,8 @@ async function hdhead() {
 
 
 async function body() {
-    const skinPath = join(__dirname, 'skin.png');
-    const output = await renderBody2D(skinPath, 100);
+    const skinPath = join(__dirname, 'hdskin.png');
+    const output = await renderBody2D(skinPath, 350);
     writeFileSync('./tests/output/skin-body.png', output);
 }
 

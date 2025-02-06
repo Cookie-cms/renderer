@@ -9,12 +9,12 @@ const BODY_PARTS = {
     leftLeg: { x: 20, y: 52, w: 4, h: 12 }
 };
 
-async function renderBody(skinPath, size) {
+async function renderBody(skinPath, size = 300) {
     try {
         const imageBuffer = await sharp(skinPath).toBuffer();
         
         // Calculate scale based on original 8x8 head size
-        const scale = Math.floor(size / 8);
+        const scale = size / 32; // Adjust scale to fit the entire body height into the given size
         
         // Scale all dimensions based on original pixel sizes
         const headSize = 8 * scale;
@@ -35,14 +35,14 @@ async function renderBody(skinPath, size) {
                     width: coords.w,
                     height: coords.h
                 })
-                .resize(width, height, {
+                .resize(Math.round(width), Math.round(height), {
                     kernel: 'nearest'
                 })
                 .toBuffer();
         }
 
-        const totalHeight = Math.floor(scale * 32);  // Total height in original pixels
-        const totalWidth = Math.floor(scale * 16);   // Total width in original pixels
+        const totalHeight = Math.round(32 * scale);  // Total height in original pixels
+        const totalWidth = Math.round(16 * scale);   // Total width in original pixels
 
         const baseImage = await sharp({
             create: {
@@ -53,12 +53,12 @@ async function renderBody(skinPath, size) {
             }
         })
         .composite([
-            { input: layers.head, top: 0, left: scale * 4 },
-            { input: layers.body, top: scale * 8, left: scale * 4 },
-            { input: layers.rightArm, top: scale * 8, left: 0 },
-            { input: layers.leftArm, top: scale * 8, left: scale * 12 },
-            { input: layers.rightLeg, top: scale * 20, left: scale * 4 },
-            { input: layers.leftLeg, top: scale * 20, left: scale * 8 }
+            { input: layers.head, top: 0, left: Math.round(4 * scale) },
+            { input: layers.body, top: Math.round(8 * scale), left: Math.round(4 * scale) },
+            { input: layers.rightArm, top: Math.round(8 * scale), left: 0 },
+            { input: layers.leftArm, top: Math.round(8 * scale), left: Math.round(12 * scale) },
+            { input: layers.rightLeg, top: Math.round(20 * scale), left: Math.round(4 * scale) },
+            { input: layers.leftLeg, top: Math.round(20 * scale), left: Math.round(8 * scale) }
         ])
         .png()
         .toBuffer();
