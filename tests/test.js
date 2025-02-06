@@ -4,6 +4,7 @@ import { join } from 'path';
 import { writeFileSync } from 'fs';
 import renderHead from '../render/facerender.js';
 import renderCapeFront from '../render/caperender.js';
+import renderBody2D from '../render/bodyrender.js';
 
 
 const __filename = fileURLToPath(import.meta.url);
@@ -32,11 +33,19 @@ async function hdhead() {
     writeFileSync('./tests/output/hdskin-rendered.png', output);
 }
 
+
+async function body() {
+    const skinPath = join(__dirname, 'skin.png');
+    const output = await renderBody2D(skinPath, 100);
+    writeFileSync('./tests/output/skin-body.png', output);
+}
+
 async function main() {
-    await cape();
-    await hdcape();
-    await head();
-    await hdhead();
+    // await cape();
+    // await hdcape();
+    // await head();
+    // await hdhead();
+    await body();
 }
 
 main().catch(console.error);
