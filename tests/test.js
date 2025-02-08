@@ -20,6 +20,10 @@ async function hdcape() {
     writeFileSync('./tests/output/hdcape-rendered.png', frontBuffer);
 }
 
+async function hrhdcape() {
+    const frontBuffer = await renderCapeFront('../tests/hrhdcape.png', 300);
+    writeFileSync('./tests/output/hrhdcape-rendered.png', frontBuffer);
+}
 async function head() {
     // Use path.join to create correct path relative to test file
     const skinPath = join(__dirname, 'skin.png');
@@ -36,16 +40,17 @@ async function hdhead() {
 
 async function body() {
     const skinPath = join(__dirname, 'hdskin.png');
-    const output = await renderBody2D(skinPath, 350);
+    const output = await renderBody2D(skinPath, 300);
     writeFileSync('./tests/output/skin-body.png', output);
 }
 
 async function main() {
     // await cape();
     // await hdcape();
+    await hrhdcape();
     // await head();
     // await hdhead();
-    await body();
+    // await body();
 }
 
 main().catch(console.error);

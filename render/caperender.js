@@ -30,6 +30,7 @@ export async function renderCapeFront(inputPath, targetSize = 300) {
     }
     
     const scaleFactor = scaleX;
+    console.log('HD Scale factor:', scaleFactor); // Will be 16 for 1024x512
 
     // Calculate HD-aware extraction dimensions
     const extractWidth = CAPE_DIMENSIONS.frontWidth * scaleFactor;
@@ -37,31 +38,22 @@ export async function renderCapeFront(inputPath, targetSize = 300) {
     const extractX = CAPE_DIMENSIONS.frontStartX * scaleFactor;
     const extractY = CAPE_DIMENSIONS.frontStartY * scaleFactor;
 
-    // Extract front section with HD support
-    const frontSection = await image
+    // Extract and scale the front section
+    return await image
       .extract({
         left: Math.round(extractX),
         top: Math.round(extractY),
         width: Math.round(extractWidth),
         height: Math.round(extractHeight)
       })
-      .toBuffer();
-
-    // Scale to target size maintaining aspect ratio
-    const finalWidth = targetSize;
-    const finalHeight = Math.round(targetSize * 1.6);
-    
-    const output = await sharp(frontSection)
-      .resize(finalWidth, finalHeight, {
-        kernel: 'nearest',
-        fit: 'fill'
+      .resize(targetSize, Math.round(targetSize * (CAPE_DIMENSIONS.frontHeight / CAPE_DIMENSIONS.frontWidth)), {
+        kernel: 'nearest'
       })
       .png()
       .toBuffer();
 
-    return output;
   } catch (error) {
-    console.error('Cape front render error:', error);
+    console.error('Cape render error:', error);
     throw error;
   }
 }
