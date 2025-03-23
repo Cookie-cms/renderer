@@ -1,9 +1,9 @@
-# @cookie-cms/renderer
+<!-- # @cookie-cms/renderer -->
 
 A Node.js module for rendering Minecraft character skins and capes using Sharp image processing.
 
 > [!NOTE]
-> This package opensource and i will not close it, and i need help to remake it [skin-renderer](https://github.com/iAverages/SkinsAPI) to package and add support of hd skins and add render capes please help me to remake it
+> This package open source and i will not close it, and i need help to remake it [skin-renderer](https://github.com/iAverages/SkinsAPI) to package and add support of hd skins and add render capes please help me to remake it
 
 
 
