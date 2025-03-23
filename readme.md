@@ -1,5 +1,3 @@
-Collecting workspace informationHere's a comprehensive README.md for your npm package:
-
 ```markdown
 # @cookie-cms/renderer
 
