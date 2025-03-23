@@ -60,25 +60,3 @@ Renders the front view of a cape.
 ## License
 
 MIT © Cookie-cms
-```
-
-This README provides:
-1. Package description
-2. Installation instructions
-3. Key features
-4. Usage examples with code snippets
-5. API documentation for the three main functions from [index.js](index.js)
-6. Dependencies information
-7. License information
-
-The format follows npm package conventions and provides all necessary information for users to get started with the package.
-This README provides:
-1. Package description
-2. Installation instructions
-3. Key features
-4. Usage examples with code snippets
-5. API documentation for the three main functions from [index.js](index.js)
-6. Dependencies information
-7. License information
-
-The format follows npm package conventions and provides all necessary information for users to get started with the package.
