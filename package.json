@@ -1,6 +1,6 @@
 {
   "name": "@cookie-cms/renderer",
-  "version": "2.0.1",
+  "version": "2.1.1",
   "private": false,
   "main": "index.js",
   "type": "module",
