@@ -1,5 +1,3 @@
-<!-- # @cookie-cms/renderer -->
-
 A Node.js module for rendering Minecraft character skins and capes using Sharp image processing.
 
 > [!NOTE]
